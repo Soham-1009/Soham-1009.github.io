@@ -22,6 +22,8 @@ export const Route = createFileRoute("/contact")({
 });
 
 const channels = [
+  { label: "Email", detail: "soham.deshpande100904@gmail.com", href: "mailto:soham.deshpande100904@gmail.com" },
+  { label: "Phone", detail: "+91 99230 99779", href: "tel:+919923099779" },
   { label: "LinkedIn", detail: "Connect with me", href: profile.linkedin },
   { label: "GitHub", detail: "See my code", href: profile.github },
   { label: "Resume", detail: "Download the PDF", href: profile.resume },

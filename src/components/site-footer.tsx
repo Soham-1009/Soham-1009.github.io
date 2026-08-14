@@ -6,18 +6,6 @@ export function SiteFooter() {
     <footer className="border-t border-border">
       <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="eyebrow">Currently</p>
-            <p className="mt-3 max-w-sm font-display text-xl leading-snug">
-              Open to AI/ML and software engineering roles.
-            </p>
-            <Link
-              to="/contact"
-              className="rule-link mt-4 inline-block font-mono text-xs tracking-[0.14em] text-signal uppercase"
-            >
-              Get in touch
-            </Link>
-          </div>
 
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <a
