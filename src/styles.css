@@ -205,10 +205,10 @@
 }
 
 /* --- Scroll reveal ------------------------------------------------------- */
-/* [data-reveal] {
+[data-reveal] {
   opacity: 0;
   transform: translateY(8px);
-} */
+}
 
 /* --- Hover motion -------------------------------------------------------- */
 @utility lift {
