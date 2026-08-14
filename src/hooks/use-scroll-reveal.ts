@@ -14,9 +14,6 @@ export function useScrollReveal(key?: string) {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
-    if (elements.length === 0) return;
-
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const show = (el: HTMLElement, animate: boolean) => {
@@ -37,7 +34,7 @@ export function useScrollReveal(key?: string) {
     };
 
     if (reduced || !("IntersectionObserver" in window)) {
-      elements.forEach((el) => show(el, false));
+      document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => show(el, false));
       return;
     }
 
@@ -52,14 +49,39 @@ export function useScrollReveal(key?: string) {
       { rootMargin: "0px 0px -8% 0px", threshold: 0.1 },
     );
 
-    elements.forEach((el) => {
-      if (revealed.has(el)) {
-        show(el, false);
-        return;
+    const observeElements = () => {
+      document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
+        if (revealed.has(el)) {
+          // If already revealed (e.g. from previous navigation), ensure it's fully visible immediately
+          show(el, false);
+          return;
+        }
+        observer.observe(el);
+      });
+    };
+
+    // Initial observation
+    observeElements();
+
+    // Re-observe when DOM mutations occur (e.g. client-side SPA navigation)
+    const mutationObserver = new MutationObserver((mutations) => {
+      let shouldReObserve = false;
+      for (const mutation of mutations) {
+        if (mutation.addedNodes.length > 0) {
+          shouldReObserve = true;
+          break;
+        }
       }
-      observer.observe(el);
+      if (shouldReObserve) {
+        observeElements();
+      }
     });
 
-    return () => observer.disconnect();
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
   }, [key]);
 }
