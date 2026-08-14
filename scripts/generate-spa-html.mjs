@@ -1,48 +1,41 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const publicDir = path.join(__dirname, '..', '.output', 'public');
-const assetsDir = path.join(publicDir, 'assets');
+async function prerenderWithFetch() {
+  console.log('Loading nitro server...');
+  
+  const serverPath = path.join(__dirname, '..', '.output', 'server', 'index.mjs');
+  const serverModule = await import(pathToFileURL(serverPath).href);
+  
+  const fetchHandler = serverModule.default?.fetch || serverModule.fetch;
+  
+  if (!fetchHandler) {
+    throw new Error('Could not find fetch handler on the built server module.');
+  }
 
-if (!fs.existsSync(assetsDir)) {
-    console.error('Assets directory not found. Did you run npm run build?');
+  console.log('Fetching index page...');
+  const req = new Request('http://localhost/');
+  const res = await fetchHandler(req, {
+    waitUntil: () => {},
+    passThroughOnException: () => {}
+  });
+
+  const html = await res.text();
+  console.log('Got HTML length:', html.length);
+  
+  if (html.includes('404')) {
+    console.error('Failed to get HTML, received 404');
     process.exit(1);
+  } else {
+    const publicDir = path.join(__dirname, '..', '.output', 'public');
+    fs.writeFileSync(path.join(publicDir, 'index.html'), html);
+    fs.writeFileSync(path.join(publicDir, '404.html'), html);
+    console.log('Successfully wrote index.html and 404.html to .output/public');
+  }
 }
 
-const files = fs.readdirSync(assetsDir);
-const indexJs = files.find(f => f.startsWith('index-') && f.endsWith('.js'));
-const stylesCss = files.find(f => f.startsWith('styles-') && f.endsWith('.css'));
-
-if (!indexJs || !stylesCss) {
-    console.error('Could not find index JS or CSS file in assets directory.');
-    process.exit(1);
-}
-
-const html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="/assets/${stylesCss}">
-</head>
-<body>
-    <div id="root"></div>
-    <script>
-      window.__TSR__ = {
-        matches: [],
-        streamedValues: {}
-      };
-    </script>
-    <script type="module" src="/assets/${indexJs}"></script>
-</body>
-</html>`;
-
-fs.writeFileSync(path.join(publicDir, 'index.html'), html);
-fs.writeFileSync(path.join(publicDir, '404.html'), html); // Fallback for GitHub Pages SPA routing
-
-console.log('Successfully generated index.html and 404.html for SPA fallback.');
+prerenderWithFetch().catch(console.error);
