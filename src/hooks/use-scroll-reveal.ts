@@ -21,11 +21,11 @@ export function useScrollReveal(key?: string) {
       const delay = Number.parseFloat(getComputedStyle(el).getPropertyValue("--reveal-delay")) || 0;
       el.animate(
         [
-          { opacity: 0, transform: "translateY(8px)" },
+          { opacity: 0, transform: "translateY(16px)" },
           { opacity: 1, transform: "translateY(0)" },
         ],
         {
-          duration: animate ? 250 : 0,
+          duration: animate ? 700 : 0,
           delay: animate ? delay : 0,
           easing: "cubic-bezier(0.16, 1, 0.3, 1)",
           fill: "forwards",

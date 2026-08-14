@@ -111,6 +111,9 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   * {
     border-color: var(--color-border);
   }
@@ -207,7 +210,7 @@
 /* --- Scroll reveal ------------------------------------------------------- */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(16px);
 }
 
 /* --- Hover motion -------------------------------------------------------- */
