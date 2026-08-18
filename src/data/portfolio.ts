@@ -7,7 +7,7 @@ export const profile = {
   availability: "Available for internships & full-time roles",
   intro:
     "I build AI-powered applications, computer-vision systems, full-stack software, and data tools — and I'm looking for opportunities in AI / ML and Software Development.",
-  email: "soham@portfolio",
+  email: "soham.deshpande100904@gmail.com",
   github: "https://github.com/Soham-1009",
   linkedin: "https://linkedin.com/in/soham-deshpande-165452248",
   resume: "/Resume.pdf",
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     year: "2025",
     category: "Computer Vision",
     stack: ["Python", "Whisper", "OpenCV", "MoviePy", "FFmpeg", "gTTS"],
-    repo: "https://github.com/Soham-1009",
+    repo: "https://github.com/Soham-1009/Translytic",
   },
   {
     slug: "notes-app",
@@ -65,7 +65,7 @@ export const projects: Project[] = [
     year: "2024",
     category: "Full Stack",
     stack: ["Python", "MySQL", "HTML", "CSS"],
-    repo: "https://github.com/Soham-1009",
+    repo: "https://github.com/Soham-1009/Notes-Taking-App",
   },
 ];
 

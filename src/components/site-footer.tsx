@@ -6,7 +6,6 @@ export function SiteFooter() {
     <footer className="border-t border-border">
       <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <a
               href={profile.github}
