@@ -13,7 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteNav } from "@/components/site-nav";
-import { SiteFooter } from "@/components/site-footer";
+
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
@@ -148,7 +148,6 @@ function RootComponent() {
         <main className="flex-1">
           <Outlet />
         </main>
-        <SiteFooter />
       </div>
     </QueryClientProvider>
   );

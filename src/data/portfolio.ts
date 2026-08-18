@@ -6,11 +6,11 @@ export const profile = {
   location: "Nagpur, Maharashtra, India",
   availability: "Available for internships & full-time roles",
   intro:
-    "I build AI-powered applications, computer-vision systems, full-stack software, and data tools — and I'm looking for opportunities in AI / ML and Software Development.",
+    "Motivated AI & ML postgraduate with a solid foundation in Python, SQL, and full-stack development (Django, MySQL, REST APIs). Hands-on experience building AI-powered applications, backend systems, and data pipelines, with strong analytical and communication skills. Interested in software development, data analysis, and research roles.",
   email: "soham.deshpande100904@gmail.com",
   github: "https://github.com/Soham-1009",
   linkedin: "https://linkedin.com/in/soham-deshpande-165452248",
-  resume: "/Resume.pdf",
+  resume: "/Resume_Updated.pdf",
 };
 
 export const stats = [
@@ -36,35 +36,35 @@ export const projects: Project[] = [
   {
     slug: "infranova-ai",
     title: "InfraNova AI",
-    tagline: "Thermal infrared satellite imagery translated into RGB",
+    tagline: "Thermal Infrared to RGB Satellite Image Translation",
     summary:
-      "An end-to-end generative AI pipeline built for the Bharatiya Antariksh Hackathon 2026 to improve visual interpretation of thermal infrared satellite imagery.",
+      "Developed a Pix2Pix conditional GAN (PyTorch) to translate Landsat 9 Thermal Infrared imagery into RGB. Features YOLOv8 integration for automated road-network extraction and an end-to-end training pipeline.",
     year: "2026",
     category: "AI / ML",
     flagship: true,
-    stack: ["PyTorch", "Pix2Pix", "OpenCV", "Streamlit", "Google Earth Engine", "GeoTIFF"],
+    stack: ["PyTorch", "Pix2Pix", "OpenCV", "FastAPI", "React", "YOLOv8"],
     repo: "https://github.com/Soham-1009/InfraNova-AI",
   },
   {
     slug: "translytic",
     title: "Translytic",
-    tagline: "Real-time video captioning and translation",
+    tagline: "AI-Based Real-Time Video Captioning & Translation System",
     summary:
-      "An AI-powered video processing application that transcribes speech, translates captions, and produces synchronized translated audio.",
+      "A real-time video processing system integrating OpenAI Whisper, Gemini API, and edge-tts for speech-to-text, translation, subtitle generation, and multilingual dubbing with timestamp synchronization.",
     year: "2025",
     category: "Computer Vision",
-    stack: ["Python", "Whisper", "OpenCV", "MoviePy", "FFmpeg", "gTTS"],
+    stack: ["Python", "Whisper", "OpenCV", "Gemini API", "Tkinter", "edge-tts"],
     repo: "https://github.com/Soham-1009/Translytic",
   },
   {
-    slug: "notes-app",
-    title: "Notes Taking App",
-    tagline: "Python and MySQL note management application",
+    slug: "noteflow",
+    title: "NoteFlow",
+    tagline: "Full Stack Notes Management Platform",
     summary:
-      "A web-based notes application built around a Python backend, MySQL database, and a responsive frontend.",
+      "A full-stack notes management application featuring user authentication, CRUD operations, category-based filtering, role-based access control, and AJAX-based real-time search capabilities.",
     year: "2024",
     category: "Full Stack",
-    stack: ["Python", "MySQL", "HTML", "CSS"],
+    stack: ["Django", "MySQL", "JavaScript", "HTML", "CSS"],
     repo: "https://github.com/Soham-1009/Notes-Taking-App",
   },
 ];
@@ -72,41 +72,53 @@ export const projects: Project[] = [
 export const skillGroups = [
   { title: "Programming", items: ["Python", "Java", "SQL"] },
   {
-    title: "AI & Machine Learning",
-    items: ["PyTorch", "Scikit-Learn", "Transformers", "Hugging Face", "OpenCV", "NumPy", "Pandas"],
+    title: "AI/ML & Data",
+    items: ["NumPy", "Pandas", "OpenCV", "Matplotlib", "PyTorch", "Scikit-learn"],
   },
-  { title: "Web & Backend", items: ["HTML5", "CSS3", "MySQL"] },
+  { title: "AI Assistants", items: ["ChatGPT", "Claude", "Gemini"] },
+  { title: "Backend & APIs", items: ["Django", "FastAPI", "REST APIs", "HTML", "CSS"] },
   {
-    title: "Data & Visualization",
-    items: ["Power BI", "Matplotlib", "Google Colab", "Google Earth Engine", "Kaggle"],
+    title: "Data & Databases",
+    items: ["MySQL", "Oracle Apex", "Data Cleaning", "Data Validation"],
   },
-  { title: "Tools & Platforms", items: ["Git", "GitHub", "Docker", "Figma", "VS Code"] },
+  { title: "Cloud & Dev Tools", items: ["Git", "GitHub", "VS Code", "Google Colab", "Kaggle"] },
+  { title: "Data Visualization", items: ["Power BI", "Excel"] },
+  {
+    title: "Soft Skills",
+    items: [
+      "Analytical Thinking",
+      "Research & Documentation",
+      "Problem Solving",
+      "Communication",
+      "Team Collaboration",
+    ],
+  },
 ];
 
 export const timeline = [
   {
-    period: "2022 – 2025",
-    title: "BCA",
-    org: "G.H. Raisoni College of Engineering and Management, Nagpur",
-    detail: "CGPA 6.58",
-  },
-  {
     period: "2025 – Present",
-    title: "MCA (AI & ML)",
+    title: "Master of Computer Applications (AI & ML)",
     org: "Ramdeobaba University, Nagpur",
     detail: "Specialization in Artificial Intelligence and Machine Learning",
   },
   {
-    period: "Ongoing",
-    title: "Applied AI & software projects",
-    org: "Independent and academic work",
-    detail: "Generative AI, computer vision, NLP, web development, and data analytics",
+    period: "2022 – 2025",
+    title: "Bachelor of Computer Applications",
+    org: "G.H. Raisoni College of Engineering and Management, Nagpur",
+    detail: "CGPA 6.58",
   },
   {
-    period: "Next",
-    title: "Looking ahead",
-    org: "Open to new roles",
-    detail: "Seeking opportunities in AI/ML, data science, and software development",
+    period: "2022",
+    title: "12th Grade (HSC)",
+    org: "Pratibha Junior College (Maharashtra State Board)",
+    detail: "Higher Secondary Certificate",
+  },
+  {
+    period: "2020",
+    title: "10th Grade (SSC)",
+    org: "S.N.B.P. International School (CBSE)",
+    detail: "Secondary School Certificate",
   },
 ];
 
