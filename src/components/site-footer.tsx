@@ -10,7 +10,7 @@ export function SiteFooter() {
             <a
               href={profile.github}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="rule-link font-mono text-xs tracking-[0.14em] text-muted-foreground uppercase transition-colors hover:text-foreground"
             >
               GitHub
@@ -18,7 +18,7 @@ export function SiteFooter() {
             <a
               href={profile.linkedin}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="rule-link font-mono text-xs tracking-[0.14em] text-muted-foreground uppercase transition-colors hover:text-foreground"
             >
               LinkedIn
@@ -26,7 +26,7 @@ export function SiteFooter() {
             <a
               href={profile.resume}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="rule-link font-mono text-xs tracking-[0.14em] text-muted-foreground uppercase transition-colors hover:text-foreground"
             >
               Resume

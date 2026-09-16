@@ -30,6 +30,7 @@ export type Project = {
   flagship?: boolean;
   stack: string[];
   repo: string;
+  demo?: string;
 };
 
 export const projects: Project[] = [
@@ -38,12 +39,13 @@ export const projects: Project[] = [
     title: "InfraNova AI",
     tagline: "Thermal Infrared to RGB Satellite Image Translation",
     summary:
-      "Developed a Pix2Pix conditional GAN (PyTorch) to translate Landsat 9 Thermal Infrared imagery into RGB. Features YOLOv8 integration for automated road-network extraction and an end-to-end training pipeline.",
+      "Built a PyTorch-based Pix2PixHD-style conditional GAN that translates Landsat 9 TIRS-2 Band 10 + Band 11 thermal imagery into synthesized RGB imagery. Developed the end-to-end inference platform with FastAPI and React/Vite, including GeoTIFF/NPY support, tiled whole-raster inference, TTA, CLAHE, and model telemetry.",
     year: "2026",
     category: "AI / ML",
     flagship: true,
     stack: ["PyTorch", "Pix2Pix", "OpenCV", "FastAPI", "React", "YOLOv8"],
     repo: "https://github.com/Soham-1009/InfraNova-AI",
+    demo: "https://infranovaai.duckdns.org/",
   },
   {
     slug: "translytic",

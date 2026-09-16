@@ -38,7 +38,7 @@ function ProjectsPage() {
         <a
           href={profile.github}
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           className="rule-link nudge mt-5 inline-block font-mono text-[11px] tracking-[0.16em] text-signal uppercase"
         >
           Browse the profile →

@@ -3,11 +3,30 @@ import type * as React from "react";
 import type { Project } from "@/data/portfolio";
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const handleProjectOpen = () => {
+    if (project.demo) {
+      window.location.assign(project.demo);
+    }
+  };
+
+  const handleProjectKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (!project.demo || (event.key !== "Enter" && event.key !== " ")) {
+      return;
+    }
+
+    event.preventDefault();
+    handleProjectOpen();
+  };
+
   return (
     <article
       data-reveal
       style={{ "--reveal-delay": `${Math.min(index, 6) * 70}ms` } as React.CSSProperties}
-      className="group relative border-t border-border px-2 py-8 transition-[transform,border-color,background-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-signal/40 hover:bg-foreground/[0.02] sm:py-10"
+      className={`group relative border-t border-border px-2 py-8 transition-[transform,border-color,background-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-signal/40 hover:bg-foreground/[0.02] sm:py-10${project.demo ? " cursor-pointer focus-visible:outline-2 focus-visible:outline-signal focus-visible:outline-offset-4" : ""}`}
+      onClick={project.demo ? handleProjectOpen : undefined}
+      onKeyDown={project.demo ? handleProjectKeyDown : undefined}
+      tabIndex={project.demo ? 0 : undefined}
+      title={project.demo ? `Open ${project.title} project website` : undefined}
     >
       <div className="grid gap-6 sm:grid-cols-[auto_1fr_auto] sm:items-start sm:gap-8">
         <span className="font-mono text-[11px] tracking-[0.16em] text-muted-foreground tabular-nums">
@@ -50,11 +69,23 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           <span className="font-mono text-[10px] tracking-[0.14em] text-muted-foreground uppercase">
             {project.category}
           </span>
+          {project.demo ? (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rule-link nudge inline-block font-mono text-[11px] tracking-[0.14em] text-signal uppercase"
+              onClick={(event) => event.stopPropagation()}
+            >
+              Live demo →
+            </a>
+          ) : null}
           <a
             href={project.repo}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="rule-link nudge inline-block font-mono text-[11px] tracking-[0.14em] text-signal uppercase"
+            onClick={(event) => event.stopPropagation()}
           >
             Source →
           </a>

@@ -34,7 +34,7 @@ export function SiteNav() {
           <a
             href={profile.resume}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="ml-1 hidden rounded-sm border border-signal/40 px-3 py-1.5 font-mono text-[11px] tracking-[0.14em] text-signal uppercase transition-colors hover:bg-signal-soft sm:inline-block"
           >
             Resume

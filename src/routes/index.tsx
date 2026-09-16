@@ -79,7 +79,7 @@ function Index() {
             <a
               href={profile.resume}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="rule-link font-mono text-[11px] tracking-[0.16em] uppercase"
             >
               Download resume
