@@ -6,11 +6,11 @@ export const profile = {
   location: "Nagpur, Maharashtra, India",
   availability: "Available for internships & full-time roles",
   intro:
-    "Motivated AI & ML postgraduate with a solid foundation in Python, SQL, and full-stack development (Django, MySQL, REST APIs). Hands-on experience building AI-powered applications, backend systems, and data pipelines, with strong analytical and communication skills. Interested in software development, data analysis, and research roles.",
+    "AI & ML postgraduate with hands-on experience across computer vision, generative AI, and full-stack development. Built and evaluated deep learning models, developed real-time AI applications using multiple LLM/API providers, and shipped REST-based web applications with relational databases.",
   email: "soham.deshpande100904@gmail.com",
   github: "https://github.com/Soham-1009",
   linkedin: "https://linkedin.com/in/soham-deshpande-165452248",
-  resume: "/Resume_Updated.pdf",
+  resume: "/Resume_Master.pdf",
 };
 
 export const stats = [
@@ -43,7 +43,7 @@ export const projects: Project[] = [
     year: "2026",
     category: "AI / ML",
     flagship: true,
-    stack: ["PyTorch", "Pix2Pix", "OpenCV", "FastAPI", "React", "YOLOv8"],
+    stack: ["PyTorch", "Pix2PixHD", "FastAPI", "React/Vite", "GeoTIFF", "YOLOv8"],
     repo: "https://github.com/Soham-1009/InfraNova-AI",
     demo: "https://infranovaai.duckdns.org/",
   },
@@ -72,19 +72,39 @@ export const projects: Project[] = [
 ];
 
 export const skillGroups = [
-  { title: "Programming", items: ["Python", "Java", "SQL"] },
   {
-    title: "AI/ML & Data",
-    items: ["NumPy", "Pandas", "OpenCV", "Matplotlib", "PyTorch", "Scikit-learn"],
+    title: "Computer Vision & Deep Learning",
+    items: [
+      "PyTorch",
+      "OpenCV",
+      "GANs (Pix2PixHD)",
+      "YOLOv8",
+      "Object Detection",
+      "Image-to-Image Translation",
+      "Satellite/Thermal Imagery",
+    ],
   },
-  { title: "AI Assistants", items: ["ChatGPT", "Claude", "Gemini"] },
-  { title: "Backend & APIs", items: ["Django", "FastAPI", "REST APIs", "HTML", "CSS"] },
   {
-    title: "Data & Databases",
-    items: ["MySQL", "Oracle Apex", "Data Cleaning", "Data Validation"],
+    title: "Generative AI & LLMs",
+    items: ["OpenAI Whisper", "Gemini API", "ChatGPT", "Claude", "Prompt Design", "AI API Integration"],
   },
-  { title: "Cloud & Dev Tools", items: ["Git", "GitHub", "VS Code", "Google Colab", "Kaggle"] },
-  { title: "Data Visualization", items: ["Power BI", "Excel"] },
+  { title: "Programming Languages", items: ["Python", "Java", "SQL"] },
+  {
+    title: "Data & Pipelines",
+    items: ["Image Preprocessing", "Normalization", "Data Validation", "Reproducible Training", "GPU Training", "Multi-GPU", "AMP"],
+  },
+  {
+    title: "Testing & Validation",
+    items: ["Pytest", "Experiment Validation", "Ablation Studies", "Pipeline Evaluation"],
+  },
+  {
+    title: "Backend & Full-Stack",
+    items: ["Django", "FastAPI", "REST APIs", "MySQL", "HTML", "CSS", "JavaScript", "NumPy", "Pandas", "Power BI", "Excel"],
+  },
+  {
+    title: "Tools & Collaboration",
+    items: ["Git", "GitHub", "Technical Documentation", "Cross-functional Teamwork"],
+  },
   {
     title: "Soft Skills",
     items: [
@@ -109,18 +129,6 @@ export const timeline = [
     title: "Bachelor of Computer Applications",
     org: "G.H. Raisoni College of Engineering and Management, Nagpur",
     detail: "CGPA 6.58",
-  },
-  {
-    period: "2022",
-    title: "12th Grade (HSC)",
-    org: "Pratibha Junior College (Maharashtra State Board)",
-    detail: "Higher Secondary Certificate",
-  },
-  {
-    period: "2020",
-    title: "10th Grade (SSC)",
-    org: "S.N.B.P. International School (CBSE)",
-    detail: "Secondary School Certificate",
   },
 ];
 
@@ -148,5 +156,11 @@ export const certifications = [
     issuer: "Google / Coursera",
     date: "Apr 2026",
     image: "/B3_49_SohamDeshpande Tools of the Trade Linux and SQL.png",
+  },
+  {
+    title: "Fundamentals of Deep Learning",
+    issuer: "NVIDIA",
+    date: "Aug 2026",
+    image: "/NVIDIA Fundamentals of Deep Learning.jpg",
   },
 ];

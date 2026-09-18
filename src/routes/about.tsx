@@ -7,7 +7,7 @@ import { certifications, profile, timeline } from "@/data/portfolio";
 
 const title = "About — Soham Deshpande";
 const description =
-  "MCA (AI & ML) student at Ramdeobaba University, Nagpur. Background, education timeline, and verified Google Cloud and Coursera certifications.";
+  "MCA (AI & ML) student at Ramdeobaba University, Nagpur. Background, education timeline, and verified Google Cloud, Coursera, and NVIDIA certifications.";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
@@ -92,7 +92,7 @@ function AboutPage() {
         <SectionHeading
           eyebrow="Certifications"
           title="Verified achievements."
-          description="Professional certifications from Google Cloud and Coursera."
+          description="Professional certifications from Google Cloud, Coursera, and NVIDIA."
         />
 
         <div className="mt-10 grid gap-px border border-border bg-border sm:grid-cols-2">
