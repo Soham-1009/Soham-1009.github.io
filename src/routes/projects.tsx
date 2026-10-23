@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { GitHubStats } from "@/components/github-stats";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
 import { profile, projects } from "@/data/portfolio";
@@ -25,6 +26,10 @@ function ProjectsPage() {
         {projects.map((project, i) => (
           <ProjectCard key={project.slug} project={project} index={i} />
         ))}
+      </div>
+
+      <div className="mt-24 border-t border-border pt-16">
+        <GitHubStats />
       </div>
 
       <div

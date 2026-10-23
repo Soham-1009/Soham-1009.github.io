@@ -2,6 +2,7 @@ import type * as React from "react";
 
 import { createFileRoute, Link } from "@tanstack/react-router";
 
+import { GitHubStats } from "@/components/github-stats";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
 import { profile, projects, skillGroups, stats } from "@/data/portfolio";
@@ -130,6 +131,13 @@ function Index() {
           >
             All projects →
           </Link>
+        </div>
+      </section>
+
+      {/* GitHub Stats */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+          <GitHubStats />
         </div>
       </section>
 
