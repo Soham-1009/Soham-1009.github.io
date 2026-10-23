@@ -6,7 +6,7 @@ import { profile, projects } from "@/data/portfolio";
 
 const title = "Work — Soham Deshpande";
 const description =
-  "Generative AI satellite imagery, real-time video translation, and full-stack tooling: projects built end to end by Soham Deshpande.";
+  "Generative AI satellite imagery, causal language modeling, fraud detection, and full-stack systems: projects built end to end by Soham Deshpande.";
 
 export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
@@ -18,7 +18,7 @@ function ProjectsPage() {
       <SectionHeading
         eyebrow="Work"
         title="Projects, from problem to shipped system."
-        description="A focused set of work spanning applied machine learning, computer vision, and full-stack development."
+        description="A focused set of work spanning applied machine learning, generative AI, computer vision, and full-stack development."
       />
 
       <div className="mt-14">
@@ -33,7 +33,7 @@ function ProjectsPage() {
       >
         <p className="eyebrow">More on GitHub</p>
         <p className="mt-3 max-w-lg font-display text-2xl leading-snug">
-          Ten-plus repositories covering AI experiments, coursework, and tooling.
+          Twelve public repositories covering AI models, experiments, coursework, and tooling.
         </p>
         <a
           href={profile.github}

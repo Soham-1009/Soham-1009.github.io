@@ -114,8 +114,8 @@ function Index() {
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <SectionHeading
             eyebrow="Selected work"
-            title="Three projects worth reading about."
-            description="Applied machine learning, computer vision, and full-stack engineering — each built end to end."
+            title="Featured projects worth reading about."
+            description="Applied machine learning, generative AI, computer vision, and full-stack engineering — each built end to end."
           />
 
           <div className="mt-12">
