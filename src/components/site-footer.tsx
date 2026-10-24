@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { profile } from "@/data/portfolio";
 
 export function SiteFooter() {

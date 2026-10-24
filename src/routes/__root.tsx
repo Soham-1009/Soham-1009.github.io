@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteNav } from "@/components/site-nav";
+import { SiteFooter } from "@/components/site-footer";
 
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import Lenis from "lenis";
@@ -111,6 +112,9 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <noscript>
+          <style>{`[data-reveal] { opacity: 1 !important; transform: none !important; }`}</style>
+        </noscript>
       </head>
       <body>
         {children}
@@ -127,15 +131,17 @@ function RootComponent() {
 
   useEffect(() => {
     const lenis = new Lenis();
+    let rafId: number;
 
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
     };
   }, []);
@@ -147,6 +153,7 @@ function RootComponent() {
         <main className="flex-1">
           <Outlet />
         </main>
+        <SiteFooter />
       </div>
     </QueryClientProvider>
   );

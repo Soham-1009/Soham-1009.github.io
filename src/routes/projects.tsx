@@ -10,6 +10,14 @@ const description =
   "Generative AI satellite imagery, causal language modeling, fraud detection, and full-stack systems: projects built end to end by Soham Deshpande.";
 
 export const Route = createFileRoute("/projects")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+    ],
+  }),
   component: ProjectsPage,
 });
 

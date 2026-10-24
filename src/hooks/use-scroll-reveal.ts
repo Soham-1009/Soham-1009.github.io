@@ -51,11 +51,7 @@ export function useScrollReveal(key?: string) {
 
     const observeElements = () => {
       document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
-        if (revealed.has(el)) {
-          // If already revealed (e.g. from previous navigation), ensure it's fully visible immediately
-          show(el, false);
-          return;
-        }
+        if (revealed.has(el)) return;
         observer.observe(el);
       });
     };

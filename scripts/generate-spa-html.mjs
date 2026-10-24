@@ -27,8 +27,8 @@ async function prerenderWithFetch() {
   const html = await res.text();
   console.log("Got HTML length:", html.length);
 
-  if (html.includes("404")) {
-    console.error("Failed to get HTML, received 404");
+  if (!res.ok) {
+    console.error(`Failed to get HTML, received status ${res.status}`);
     process.exit(1);
   } else {
     const publicDir = path.join(__dirname, "..", ".output", "public");
@@ -38,4 +38,7 @@ async function prerenderWithFetch() {
   }
 }
 
-prerenderWithFetch().catch(console.error);
+prerenderWithFetch().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

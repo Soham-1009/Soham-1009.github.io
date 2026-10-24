@@ -10,6 +10,14 @@ const description =
   "MCA (AI & ML) student at Ramdeobaba University, Nagpur. Background, education timeline, and verified Google Cloud, Coursera, and NVIDIA certifications.";
 
 export const Route = createFileRoute("/about")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+    ],
+  }),
   component: AboutPage,
 });
 
