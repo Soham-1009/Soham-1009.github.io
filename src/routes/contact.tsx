@@ -1,11 +1,10 @@
 import type * as React from "react";
-
 import { createFileRoute } from "@tanstack/react-router";
 
 import { SectionHeading } from "@/components/section-heading";
 import { profile } from "@/data/portfolio";
 
-const title = "Contact — Soham Deshpande";
+const title = "Contact · Soham Deshpande";
 const description =
   "Get in touch with Soham Deshpande about AI/ML internships, software engineering roles, or project collaboration in Nagpur and remote.";
 
@@ -35,55 +34,62 @@ const channels = [
 
 function ContactPage() {
   return (
-    <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-      <SectionHeading
-        eyebrow="Contact"
-        title="Let's talk."
-        description="Open to internships and full-time software development roles in AI/ML, data science, and product engineering."
-      />
+    <div className="mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-24 lg:px-12 space-y-20">
+      <section>
+        <SectionHeading
+          title="Let's talk."
+          description="Open to internships and full-time software development roles in AI/ML, data science, and product engineering."
+        />
 
-      <div className="mt-14 grid gap-px border border-border bg-border sm:grid-cols-3">
-        {channels.map((channel, i) => {
-          const isExternal =
-            !channel.href.startsWith("mailto:") && !channel.href.startsWith("tel:");
-          return (
-            <a
-              key={channel.label}
-              href={channel.href}
-              target={isExternal ? "_blank" : undefined}
-              rel={isExternal ? "noreferrer" : undefined}
-              data-reveal
-              style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}
-              className="group bg-background p-8 transition-[background-color,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:bg-secondary"
-            >
-              <p className="font-display text-xl font-semibold transition-colors group-hover:text-signal">
-                {channel.label}
-              </p>
-              <p className="mt-2 text-sm text-muted-foreground">{channel.detail}</p>
-              <span className="mt-6 block font-mono transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 text-[11px] tracking-[0.16em] text-signal uppercase">
-                Open →
-              </span>
-            </a>
-          );
-        })}
-      </div>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {channels.map((channel, i) => {
+            const isExternal =
+              !channel.href.startsWith("mailto:") && !channel.href.startsWith("tel:");
+            return (
+              <a
+                key={channel.label}
+                href={channel.href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noreferrer" : undefined}
+                data-reveal
+                style={{ "--reveal-delay": `${i * 70}ms` } as React.CSSProperties}
+                className="group rounded-xl bg-surface/50 p-6 transition-colors hover:bg-surface sm:p-8"
+              >
+                <h3 className="text-xl font-semibold transition-colors group-hover:text-signal">
+                  {channel.label}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">{channel.detail}</p>
+                <span className="rule-link mt-6 inline-block text-[13px] font-medium text-signal">
+                  Open channel →
+                </span>
+              </a>
+            );
+          })}
+        </div>
+      </section>
 
-      <div className="mt-16 grid gap-10 sm:grid-cols-2">
-        <div data-reveal>
-          <p className="eyebrow">Location</p>
-          <p className="mt-3 font-display text-2xl">{profile.location}</p>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Available for on-site roles in Nagpur and remote work elsewhere.
-          </p>
+      <section>
+        <div className="grid gap-6 sm:grid-cols-2">
+          <div data-reveal className="rounded-xl bg-surface/50 p-6 sm:p-8">
+            <h3 className="text-sm font-medium text-muted-foreground">Location</h3>
+            <p className="mt-2 text-2xl font-semibold">{profile.location}</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Available for on-site roles in Nagpur and remote work elsewhere.
+            </p>
+          </div>
+          <div
+            data-reveal
+            style={{ "--reveal-delay": "90ms" } as React.CSSProperties}
+            className="rounded-xl bg-surface/50 p-6 sm:p-8"
+          >
+            <h3 className="text-sm font-medium text-muted-foreground">Response time</h3>
+            <p className="mt-2 text-2xl font-semibold">Within a day or two</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              LinkedIn and email are the fastest ways to reach me for role enquiries.
+            </p>
+          </div>
         </div>
-        <div data-reveal style={{ "--reveal-delay": "90ms" } as React.CSSProperties}>
-          <p className="eyebrow">Response time</p>
-          <p className="mt-3 font-display text-2xl">Within a day or two</p>
-          <p className="mt-2 text-sm text-muted-foreground">
-            LinkedIn is the fastest way to reach me for role enquiries.
-          </p>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }

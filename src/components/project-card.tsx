@@ -1,5 +1,4 @@
 import type * as React from "react";
-
 import type { Project } from "@/data/portfolio";
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -7,35 +6,59 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
     <article
       data-reveal
       style={{ "--reveal-delay": `${Math.min(index, 6) * 70}ms` } as React.CSSProperties}
-      className="group relative border-t border-border px-2 py-8 transition-[transform,border-color,background-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-signal/40 hover:bg-foreground/[0.02] sm:py-10"
+      className="group relative rounded-xl bg-surface/50 p-6 transition-colors duration-300 hover:bg-surface sm:p-8"
     >
-      <div className="grid gap-6 sm:grid-cols-[auto_1fr_auto] sm:items-start sm:gap-8">
-        <span className="font-mono text-[11px] tracking-[0.16em] text-muted-foreground tabular-nums">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-
+      <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-start lg:gap-8">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-3">
-            <h3 className="font-display text-2xl font-semibold transition-colors group-hover:text-signal sm:text-3xl">
+            <h3 className="text-2xl font-semibold transition-colors group-hover:text-signal sm:text-3xl">
               {project.title}
             </h3>
             {project.flagship ? (
-              <span className="rounded-sm bg-signal-soft px-2 py-0.5 font-mono text-[10px] tracking-[0.14em] text-signal uppercase">
+              <span className="rounded-full bg-signal-soft px-3 py-1 text-[13px] font-medium text-signal">
                 Flagship
               </span>
             ) : null}
           </div>
 
-          <p className="mt-2 text-base text-foreground/85">{project.tagline}</p>
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground text-pretty">
+          <p className="mt-2 text-base text-foreground/90">{project.tagline}</p>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground text-pretty sm:text-base">
             {project.summary}
           </p>
 
-          <ul className="mt-5 flex flex-wrap gap-x-3 gap-y-2">
+          {project.slug === "infranova-ai" && (
+            <div className="mt-6 max-w-xl overflow-hidden rounded-lg bg-background/60">
+              <img
+                src="/assets/satellite-image-of-france-in-august-2002.jpg"
+                alt="Satellite Earth observation raster imagery"
+                loading="lazy"
+                className="aspect-[16/9] w-full object-cover"
+              />
+              <p className="p-3 text-[13px] text-muted-foreground">
+                Domain data: Multi-band satellite Earth observation imagery for cross-spectral synthesis
+              </p>
+            </div>
+          )}
+
+          {project.slug === "lstm-language-model" && (
+            <div className="mt-6 max-w-xl overflow-hidden rounded-lg bg-background/60 p-4">
+              <img
+                src="/assets/convolutional-neural-network-maxpooling.png"
+                alt="Neural architecture layers diagram"
+                loading="lazy"
+                className="w-full object-contain"
+              />
+              <p className="mt-2 text-[13px] text-muted-foreground">
+                Deep learning architecture: custom causal PyTorch sequence model (26.75M parameters)
+              </p>
+            </div>
+          )}
+
+          <ul className="mt-6 flex flex-wrap gap-2">
             {project.stack.map((tech) => (
               <li
                 key={tech}
-                className="border border-border px-2 py-1 transition-colors duration-300 hover:border-signal/50 hover:text-foreground font-mono text-[10px] tracking-[0.1em] text-muted-foreground uppercase"
+                className="rounded-md bg-background/80 px-2.5 py-1 text-[13px] font-normal text-muted-foreground"
               >
                 {tech}
               </li>
@@ -43,33 +66,35 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           </ul>
         </div>
 
-        <div className="flex items-center gap-4 sm:flex-col sm:items-end sm:gap-3">
-          <span className="font-mono text-[11px] tracking-[0.16em] text-muted-foreground tabular-nums">
+        <div className="flex flex-wrap items-center gap-4 lg:flex-col lg:items-end lg:gap-3">
+          <span className="text-sm font-medium text-muted-foreground tabular-nums">
             {project.year}
           </span>
-          <span className="font-mono text-[10px] tracking-[0.14em] text-muted-foreground uppercase">
+          <span className="text-[13px] text-muted-foreground">
             {project.category}
           </span>
-          {project.demo ? (
+          <div className="flex items-center gap-4 lg:mt-2 lg:flex-col lg:items-end lg:gap-2">
+            {project.demo ? (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rule-link inline-block text-sm font-medium text-signal"
+                onClick={(event) => event.stopPropagation()}
+              >
+                Live demo →
+              </a>
+            ) : null}
             <a
-              href={project.demo}
+              href={project.repo}
               target="_blank"
               rel="noopener noreferrer"
-              className="rule-link nudge inline-block font-mono text-[11px] tracking-[0.14em] text-signal uppercase"
+              className="rule-link inline-block text-sm font-medium text-foreground transition-colors hover:text-signal"
               onClick={(event) => event.stopPropagation()}
             >
-              Live demo →
+              Source code →
             </a>
-          ) : null}
-          <a
-            href={project.repo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rule-link nudge inline-block font-mono text-[11px] tracking-[0.14em] text-signal uppercase"
-            onClick={(event) => event.stopPropagation()}
-          >
-            Source →
-          </a>
+          </div>
         </div>
       </div>
     </article>

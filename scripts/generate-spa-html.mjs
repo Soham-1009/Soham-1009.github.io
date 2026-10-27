@@ -20,6 +20,8 @@ async function prerenderWithFetch() {
   const routes = ["/", "/projects", "/about", "/contact"];
   const publicDir = path.join(__dirname, "..", ".output", "public");
 
+  const rewriteScript = '<script>if(location.pathname.endsWith("/index.html")){history.replaceState(null,"",location.pathname.replace(/\\/index\\.html$/,"")||"/");}</script>';
+
   for (const route of routes) {
     console.log(`Fetching route: ${route}`);
     const req = new Request(`http://localhost${route}`);
@@ -28,12 +30,16 @@ async function prerenderWithFetch() {
       passThroughOnException: () => {},
     });
 
-    const html = await res.text();
+    let html = await res.text();
     console.log(`Got HTML length for ${route}:`, html.length);
 
     if (!res.ok) {
       console.error(`Failed to get HTML for ${route}, received status ${res.status}`);
       process.exit(1);
+    }
+
+    if (!html.includes('location.pathname.endsWith("/index.html")')) {
+      html = html.replace('<head>', '<head>' + rewriteScript);
     }
 
     if (route === "/") {

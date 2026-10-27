@@ -5,27 +5,17 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * Design system definition (Taste Skill: dark-room direction).
+ * Palette: graphite (#18191b), surface (#222427), ink (#eff0f1), high-contrast muted (#b8bac0), accent/signal (#ff4a1f).
+ * Typography: Switzer (Swiss Neo-Grotesk).
  */
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+  --radius-2xl: calc(var(--radius) + 12px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -38,6 +28,7 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-surface: var(--surface);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
@@ -45,23 +36,8 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --font-display: "Space Grotesk", system-ui, sans-serif;
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Switzer", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Switzer", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-signal: var(--signal);
@@ -69,57 +45,44 @@
 }
 
 :root {
-  --radius: 0.25rem;
+  --radius: 0.5rem;
 
-  /* Warm ink base with an amber signal accent. Dark-first, single theme. */
-  --background: oklch(0.165 0.008 75);
-  --foreground: oklch(0.945 0.012 85);
-  --ink: oklch(0.135 0.008 75);
-  --ink-soft: oklch(0.215 0.01 78);
-  --card: oklch(0.205 0.01 78);
-  --card-foreground: oklch(0.945 0.012 85);
-  --popover: oklch(0.205 0.01 78);
-  --popover-foreground: oklch(0.945 0.012 85);
-  --primary: oklch(0.79 0.155 72);
-  --primary-foreground: oklch(0.16 0.02 70);
-  --signal: oklch(0.79 0.155 72);
-  --signal-soft: oklch(0.79 0.155 72 / 14%);
-  --secondary: oklch(0.245 0.012 78);
-  --secondary-foreground: oklch(0.945 0.012 85);
-  --muted: oklch(0.245 0.012 78);
-  --muted-foreground: oklch(0.68 0.018 82);
-  --accent: oklch(0.66 0.09 195);
-  --accent-foreground: oklch(0.14 0.01 75);
-  --destructive: oklch(0.62 0.2 25);
-  --destructive-foreground: oklch(0.97 0.01 85);
-  --border: oklch(0.945 0.012 85 / 12%);
-  --input: oklch(0.945 0.012 85 / 16%);
-  --ring: oklch(0.79 0.155 72);
-  --chart-1: oklch(0.79 0.155 72);
-  --chart-2: oklch(0.66 0.09 195);
-  --chart-3: oklch(0.72 0.1 140);
-  --chart-4: oklch(0.7 0.13 40);
-  --chart-5: oklch(0.6 0.06 260);
-  --sidebar: oklch(0.205 0.01 78);
-  --sidebar-foreground: oklch(0.945 0.012 85);
-  --sidebar-primary: oklch(0.79 0.155 72);
-  --sidebar-primary-foreground: oklch(0.16 0.02 70);
-  --sidebar-accent: oklch(0.245 0.012 78);
-  --sidebar-accent-foreground: oklch(0.945 0.012 85);
-  --sidebar-border: oklch(0.945 0.012 85 / 12%);
-  --sidebar-ring: oklch(0.79 0.155 72);
+  /* The Dark Room palette: deep graphite with safety-orange signal and high-contrast ink */
+  --background: #18191b;
+  --surface: #222427;
+  --foreground: #eff0f1;
+  --ink: #eff0f1;
+  --ink-soft: #b8bac0;
+  --card: #222427;
+  --card-foreground: #eff0f1;
+  --popover: #222427;
+  --popover-foreground: #eff0f1;
+  --primary: #ff4a1f;
+  --primary-foreground: #18191b;
+  --signal: #ff4a1f;
+  --signal-soft: rgba(255, 74, 31, 0.14);
+  --secondary: #222427;
+  --secondary-foreground: #eff0f1;
+  --muted: #222427;
+  --muted-foreground: #b8bac0;
+  --accent: #ff4a1f;
+  --accent-foreground: #18191b;
+  --destructive: #e04536;
+  --destructive-foreground: #eff0f1;
+  --border: transparent;
+  --input: #2a2d31;
+  --ring: #ff4a1f;
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
-
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   h1,
@@ -130,11 +93,28 @@
   h6 {
     font-family: var(--font-display);
     letter-spacing: -0.025em;
+    color: var(--color-foreground);
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-foreground);
+  }
+
+  a {
+    color: inherit;
   }
 
   ::selection {
     background: var(--signal);
     color: var(--primary-foreground);
+  }
+
+  /* Taste-skill house rule: Nothing meant to be read goes below 13px */
+  .text-xs {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
   }
 }
 
@@ -142,22 +122,46 @@
   text-wrap: balance;
 }
 
-/* Faint blueprint grid used behind hero and section breaks. */
-@utility grid-field {
-  background-image:
-    linear-gradient(to right, var(--border) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+@utility text-pretty {
+  text-wrap: pretty;
 }
 
-/* Small uppercase monospace label used for section eyebrows. */
-@utility eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--signal);
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--signal);
+  color: var(--primary-foreground);
+  padding: 0.875rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--radius);
+  min-height: 44px;
+  line-height: 1;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  &:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+}
+
+@utility btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--surface);
+  color: var(--foreground);
+  padding: 0.875rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--radius);
+  min-height: 44px;
+  line-height: 1;
+  transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    background-color: #2c2f33;
+    transform: translateY(-1px);
+  }
 }
 
 @utility rule-link {
@@ -167,12 +171,12 @@
     position: absolute;
     left: 0;
     bottom: -2px;
-    height: 1px;
+    height: 1.5px;
     width: 100%;
     background: currentColor;
     transform: scaleX(0);
     transform-origin: right;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
   &:hover::after {
     transform: scaleX(1);
@@ -181,13 +185,13 @@
 }
 
 @utility reveal {
-  animation: reveal-up 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: reveal-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes reveal-up {
   from {
-    opacity: 0;
-    transform: translateY(8px);
+    opacity: 0.85;
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -204,33 +208,41 @@
   }
 }
 
-/* --- Scroll reveal ------------------------------------------------------- */
+/* --- Scroll reveal: visible by default for robust SEO and static render --- */
 [data-reveal] {
-  opacity: 0;
-  transform: translateY(16px);
+  opacity: 1;
+  transform: none;
 }
 
-/* --- Hover motion -------------------------------------------------------- */
-@utility lift {
-  transition:
-    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.35s ease,
-    background-color 0.35s ease;
-  &:hover {
-    transform: translateY(-3px);
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- Taste motion entrance ---------------------------------------------- */
+@keyframes subtle-entrance {
+  from {
+    opacity: 0.88;
+    transform: translateY(6px);
   }
-}
-
-@utility nudge {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  &:hover {
-    transform: translateX(3px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal] {
+  to {
     opacity: 1;
-    transform: none;
+    transform: translateY(0);
   }
 }
+
+.taste-reveal {
+  animation: subtle-entrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.taste-reveal-1 { animation-delay: 50ms; }
+.taste-reveal-2 { animation-delay: 100ms; }
+.taste-reveal-3 { animation-delay: 150ms; }
+.taste-reveal-4 { animation-delay: 200ms; }
+.taste-reveal-5 { animation-delay: 250ms; }
+.taste-reveal-6 { animation-delay: 300ms; }
+.taste-reveal-7 { animation-delay: 350ms; }
+.taste-reveal-8 { animation-delay: 400ms; }
+.taste-reveal-9 { animation-delay: 450ms; }
+.taste-reveal-10 { animation-delay: 500ms; }
