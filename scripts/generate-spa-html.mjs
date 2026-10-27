@@ -17,25 +17,36 @@ async function prerenderWithFetch() {
     throw new Error("Could not find fetch handler on the built server module.");
   }
 
-  console.log("Fetching index page...");
-  const req = new Request("http://localhost/");
-  const res = await fetchHandler(req, {
-    waitUntil: () => {},
-    passThroughOnException: () => {},
-  });
+  const routes = ["/", "/projects", "/about", "/contact"];
+  const publicDir = path.join(__dirname, "..", ".output", "public");
 
-  const html = await res.text();
-  console.log("Got HTML length:", html.length);
+  for (const route of routes) {
+    console.log(`Fetching route: ${route}`);
+    const req = new Request(`http://localhost${route}`);
+    const res = await fetchHandler(req, {
+      waitUntil: () => {},
+      passThroughOnException: () => {},
+    });
 
-  if (!res.ok) {
-    console.error(`Failed to get HTML, received status ${res.status}`);
-    process.exit(1);
-  } else {
-    const publicDir = path.join(__dirname, "..", ".output", "public");
-    fs.writeFileSync(path.join(publicDir, "index.html"), html);
-    fs.writeFileSync(path.join(publicDir, "404.html"), html);
-    console.log("Successfully wrote index.html and 404.html to .output/public");
+    const html = await res.text();
+    console.log(`Got HTML length for ${route}:`, html.length);
+
+    if (!res.ok) {
+      console.error(`Failed to get HTML for ${route}, received status ${res.status}`);
+      process.exit(1);
+    }
+
+    if (route === "/") {
+      fs.writeFileSync(path.join(publicDir, "index.html"), html);
+      fs.writeFileSync(path.join(publicDir, "404.html"), html);
+    } else {
+      const targetDir = path.join(publicDir, route.slice(1));
+      fs.mkdirSync(targetDir, { recursive: true });
+      fs.writeFileSync(path.join(targetDir, "index.html"), html);
+    }
   }
+
+  console.log("Successfully wrote all static routes and 404.html to .output/public");
 }
 
 prerenderWithFetch().catch((err) => {

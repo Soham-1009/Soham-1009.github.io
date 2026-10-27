@@ -20,6 +20,7 @@ test("public assets referenced in portfolio exist", () => {
     "github-stats/github-stats.svg",
     "github-stats/top-langs.svg",
     "github-stats/streak-stats.svg",
+    "favicon.svg",
   ];
 
   for (const asset of assets) {
@@ -28,11 +29,30 @@ test("public assets referenced in portfolio exist", () => {
   }
 });
 
-test("generate-spa-html exits with failure when response is not ok", async () => {
+test("generate-spa-html prerenders all static routes and exits with failure on error", async () => {
   const scriptContent = fs.readFileSync(
     path.join(rootDir, "scripts", "generate-spa-html.mjs"),
     "utf-8",
   );
   assert.ok(scriptContent.includes("!res.ok"), "Must check !res.ok");
   assert.ok(scriptContent.includes("process.exit(1)"), "Must exit on failure");
+  assert.ok(scriptContent.includes('"/projects"'), "Must prerender /projects");
+  assert.ok(scriptContent.includes('"/about"'), "Must prerender /about");
+  assert.ok(scriptContent.includes('"/contact"'), "Must prerender /contact");
+});
+
+test("portfolio data structure and links are well-formed", async () => {
+  const portfolioContent = fs.readFileSync(
+    path.join(rootDir, "src", "data", "portfolio.ts"),
+    "utf-8",
+  );
+
+  assert.ok(portfolioContent.includes("soham.deshpande100904@gmail.com"), "Must contain email");
+  assert.ok(portfolioContent.includes("https://github.com/Soham-1009"), "Must contain GitHub link");
+
+  // Verify project slugs are present and unique
+  const slugMatches = [...portfolioContent.matchAll(/slug:\s*["']([^"']+)["']/g)].map((m) => m[1]);
+  assert.ok(slugMatches.length >= 5, "Must have at least 5 projects");
+  const uniqueSlugs = new Set(slugMatches);
+  assert.equal(slugMatches.length, uniqueSlugs.size, "Project slugs must be unique");
 });

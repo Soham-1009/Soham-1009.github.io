@@ -24,8 +24,8 @@ export const Route = createFileRoute("/contact")({
 const channels = [
   {
     label: "Email",
-    detail: "soham.deshpande100904@gmail.com",
-    href: "mailto:soham.deshpande100904@gmail.com",
+    detail: profile.email,
+    href: `mailto:${profile.email}`,
   },
   { label: "Phone", detail: "+91 99230 99779", href: "tel:+919923099779" },
   { label: "LinkedIn", detail: "Connect with me", href: profile.linkedin },
@@ -43,25 +43,29 @@ function ContactPage() {
       />
 
       <div className="mt-14 grid gap-px border border-border bg-border sm:grid-cols-3">
-        {channels.map((channel, i) => (
-          <a
-            key={channel.label}
-            href={channel.href}
-            target="_blank"
-            rel="noreferrer"
-            data-reveal
-            style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}
-            className="group bg-background p-8 transition-[background-color,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:bg-secondary"
-          >
-            <p className="font-display text-xl font-semibold transition-colors group-hover:text-signal">
-              {channel.label}
-            </p>
-            <p className="mt-2 text-sm text-muted-foreground">{channel.detail}</p>
-            <span className="mt-6 block font-mono transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 text-[11px] tracking-[0.16em] text-signal uppercase">
-              Open →
-            </span>
-          </a>
-        ))}
+        {channels.map((channel, i) => {
+          const isExternal =
+            !channel.href.startsWith("mailto:") && !channel.href.startsWith("tel:");
+          return (
+            <a
+              key={channel.label}
+              href={channel.href}
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noreferrer" : undefined}
+              data-reveal
+              style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}
+              className="group bg-background p-8 transition-[background-color,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:bg-secondary"
+            >
+              <p className="font-display text-xl font-semibold transition-colors group-hover:text-signal">
+                {channel.label}
+              </p>
+              <p className="mt-2 text-sm text-muted-foreground">{channel.detail}</p>
+              <span className="mt-6 block font-mono transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 text-[11px] tracking-[0.16em] text-signal uppercase">
+                Open →
+              </span>
+            </a>
+          );
+        })}
       </div>
 
       <div className="mt-16 grid gap-10 sm:grid-cols-2">

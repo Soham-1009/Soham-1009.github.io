@@ -1,11 +1,12 @@
 {
-  "name": "tanstack_start_ts",
+  "name": "soham-portfolio",
   "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "postbuild": "node scripts/generate-spa-html.mjs",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
@@ -18,12 +19,9 @@
     "@tanstack/react-router": "1.170.18",
     "@tanstack/react-start": "1.168.32",
     "@tanstack/router-plugin": "1.168.23",
-    "clsx": "^2.1.1",
     "lenis": "^1.3.26",
-    "lru-cache": "^11.5.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.1",
     "tw-animate-css": "^1.3.4"
   },

@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { GitHubStats } from "@/components/github-stats";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
-import { profile, projects } from "@/data/portfolio";
+import { profile, projects, stats } from "@/data/portfolio";
 
 const title = "Work — Soham Deshpande";
 const description =
@@ -22,6 +22,8 @@ export const Route = createFileRoute("/projects")({
 });
 
 function ProjectsPage() {
+  const repoCount = stats.find((s) => s.label.includes("repositories"))?.value ?? "12";
+
   return (
     <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
       <SectionHeading
@@ -46,7 +48,7 @@ function ProjectsPage() {
       >
         <p className="eyebrow">More on GitHub</p>
         <p className="mt-3 max-w-lg font-display text-2xl leading-snug">
-          Twelve public repositories covering AI models, experiments, coursework, and tooling.
+          {repoCount} public repositories covering AI models, experiments, coursework, and tooling.
         </p>
         <a
           href={profile.github}
