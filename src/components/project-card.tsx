@@ -40,20 +40,6 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
             </div>
           )}
 
-          {project.slug === "lstm-language-model" && (
-            <div className="mt-6 max-w-xl overflow-hidden rounded-lg bg-background/60 p-4">
-              <img
-                src="/assets/convolutional-neural-network-maxpooling.png"
-                alt="Neural architecture layers diagram"
-                loading="lazy"
-                className="w-full object-contain"
-              />
-              <p className="mt-2 text-[13px] text-muted-foreground">
-                Deep learning architecture: custom causal PyTorch sequence model (26.75M parameters)
-              </p>
-            </div>
-          )}
-
           <ul className="mt-6 flex flex-wrap gap-2">
             {project.stack.map((tech) => (
               <li

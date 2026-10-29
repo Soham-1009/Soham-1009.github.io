@@ -55,4 +55,10 @@ test("portfolio data structure and links are well-formed", async () => {
   assert.ok(slugMatches.length >= 5, "Must have at least 5 projects");
   const uniqueSlugs = new Set(slugMatches);
   assert.equal(slugMatches.length, uniqueSlugs.size, "Project slugs must be unique");
+
+  // Verify LSTM repo matches actual GitHub repository slug
+  assert.ok(
+    portfolioContent.includes("https://github.com/Soham-1009/LSTM-to-predict-next-word"),
+    "LSTM project must link to LSTM-to-predict-next-word",
+  );
 });

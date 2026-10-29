@@ -100,14 +100,14 @@ function Index() {
           <div className="lg:col-span-5 space-y-4">
             <div className="overflow-hidden rounded-md bg-surface transition-transform duration-300 hover:scale-[1.01]">
               <img
-                src="/assets/satellite-image-of-france-in-august-2002.jpg"
-                alt="Multispectral satellite imagery of Earth captured by NASA MODIS"
+                src="/assets/nasa-set-to-launch-shoebox-sized-satellite-poster.jpg"
+                alt="NASA Dellingr CubeSat Earth observation satellite deployment"
                 className="w-full h-auto object-cover filter contrast-[1.02]"
                 loading="lazy"
               />
             </div>
             <p className="text-[13px] leading-relaxed text-muted-foreground">
-              MODIS Terra satellite capture of Western Europe. Multispectral Earth observation data processed for cross-spectral synthetic translation benchmarks.
+              NASA Dellingr CubeSat mission deployment. Compact orbital systems engineered for low-Earth orbit research and data collection.
             </p>
           </div>
 
@@ -349,14 +349,6 @@ function Index() {
 
       {/* 5. TELEMETRY: GitHub activity */}
       <section className="taste-reveal taste-reveal-8 mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
-        <div className="mb-10">
-          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-            Engineering Telemetry
-          </h2>
-          <p className="mt-2 text-base text-muted-foreground">
-            Live GitHub commits, streak consistency, and language distribution across repositories.
-          </p>
-        </div>
         <GitHubStats />
       </section>
 

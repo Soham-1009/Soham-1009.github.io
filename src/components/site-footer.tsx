@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { profile } from "@/data/portfolio";
+import { profile, projects } from "@/data/portfolio";
 
 export function SiteFooter() {
   return (
@@ -36,39 +36,21 @@ export function SiteFooter() {
           <div>
             <p className="font-medium text-foreground">Selected Work</p>
             <ul className="mt-4 space-y-2.5 text-muted-foreground">
-              <li>
-                <a
-                  href="https://github.com/Soham-1009/InfraNova-AI"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-foreground"
-                >
-                  InfraNova AI
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/Soham-1009/ScamShield-AI"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-foreground"
-                >
-                  ScamShield AI
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/Soham-1009/LSTM-Language-Model"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-foreground"
-                >
-                  LSTM Language Model
-                </a>
-              </li>
+              {projects.slice(0, 3).map((project) => (
+                <li key={project.slug}>
+                  <a
+                    href={project.repo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="transition-colors hover:text-foreground"
+                  >
+                    {project.title}
+                  </a>
+                </li>
+              ))}
               <li>
                 <Link to="/projects" className="transition-colors hover:text-foreground">
-                  All 5 Projects →
+                  All {projects.length} Projects →
                 </Link>
               </li>
             </ul>
